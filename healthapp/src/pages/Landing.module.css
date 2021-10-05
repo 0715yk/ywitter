@@ -97,7 +97,6 @@ header {
 
 .colorPart {
   display: flex;
-  justify-content: flex-end;
   overflow-x: scroll;
   padding-left: 1rem;
   padding-bottom: 1.5rem;
@@ -127,4 +126,10 @@ header {
   padding: 0.8rem;
   border-radius: 3.5px;
   margin-top: 3rem;
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .colorPart {
+    justify-content: flex-end;
+  }
 }
