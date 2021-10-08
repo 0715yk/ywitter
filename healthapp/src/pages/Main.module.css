@@ -1,0 +1,19 @@
+.workoutPart {
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.workoutName {
+  color: white;
+  text-align: center;
+}
+
+.setPart {
+  background-color: white;
+}
+
+.plusBtn {
+  background-color: "white";
+  text-align: center;
+}

@@ -1,51 +1,65 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Main.module.css";
+import List from "./List";
 
-const Main = ({ workouts }) => {
-  const [checkList, setCheckList] = useState({});
+const Main = ({ workouts, color }) => {
+  const [checkList, setCheckList] = useState([]);
+  const [flag, setFlag] = useState(true);
 
   useEffect(() => {
-    const obj = {};
-    for (let workout of workouts) {
-      obj[workout] = {
-        sets: [],
-      };
+    const obj = [];
+    for (let i = 0; i < workouts.length; i++) {
+      obj[i] = [];
     }
     setCheckList(obj);
   }, []);
 
-  const startWorkOut = (workout) => {
-    const copyObj = Object.assign(checkList);
-    copyObj[workout]["sets"].push({
-      startTime: "0405",
-    });
-    setCheckList(copyObj);
+  const addWorkoutSet = (key) => {
+    const copyArr = Object.assign(checkList);
+    copyArr.push("h;lll");
+    console.log(copyArr);
+    setCheckList(copyArr);
   };
+
+  useEffect(() => {}, [checkList]);
+
   return (
     <div className={styles.mainPage}>
-      <header> </header>
+      <header style={{ backgroundColor: color }}>
+        <i className="fas fa-running"></i> Progressive Overload
+      </header>
       <main>
-        <ul>
-          {Object.entries(checkList).map((workout, key) => {
-            return (
-              <li key={key}>
-                {workout[0]}
-                <button
-                  onClick={() => {
-                    startWorkOut(workout[0]);
-                  }}
-                >
-                  start
-                </button>
-                <ul>
-                  {checkList[workout[0]]["sets"].map((set) => {
-                    return <li>{set["startTime"]}</li>;
-                  })}
-                </ul>
-              </li>
-            );
-          })}
-        </ul>
+        <section>
+          <div className={styles.workoutPart}>
+            {flag &&
+              checkList.map((list, key) => {
+                return (
+                  <>
+                    <div
+                      className={styles.workoutName}
+                      style={{ backgroundColor: color }}
+                    >
+                      {workouts[key]}
+                    </div>
+                    <div
+                      onClick={() => {
+                        addWorkoutSet(key);
+                        setFlag(false);
+                        setFlag(true);
+                      }}
+                      className={styles.plusBtn}
+                      style={{
+                        color: color,
+                      }}
+                    >
+                      +
+                    </div>
+                    <List list={list} />
+                  </>
+                );
+              })}
+          </div>
+        </section>
       </main>
     </div>
   );

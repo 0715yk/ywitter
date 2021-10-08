@@ -2,12 +2,12 @@ import React, { useState, useRef } from "react";
 import styles from "./Landing.module.css";
 import { useHistory } from "react-router-dom";
 
-const Landing = ({ workouts, setWorkouts }) => {
+const Landing = ({ workouts, setWorkouts, color, setColor }) => {
   const history = useHistory();
   const [workout, setWorkout] = useState("");
   const selectRef = useRef(null);
   const inputRef = useRef(null);
-  const [color, setColor] = useState("black");
+
   const [colorPopup, setColorPopup] = useState(false);
   const colors = [
     "black",
