@@ -19,7 +19,7 @@ function App() {
           />
         </Route>
         <Route path="/main">
-          <Main workouts={workouts} color={color} />
+          <Main workouts={workouts} color={color} setWorkouts={setWorkouts} />
         </Route>
       </Switch>
     </Router>

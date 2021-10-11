@@ -7,7 +7,6 @@ const Landing = ({ workouts, setWorkouts, color, setColor }) => {
   const [workout, setWorkout] = useState("");
   const selectRef = useRef(null);
   const inputRef = useRef(null);
-
   const [colorPopup, setColorPopup] = useState(false);
   const colors = [
     "black",
@@ -78,6 +77,29 @@ const Landing = ({ workouts, setWorkouts, color, setColor }) => {
     }
     history.push("/main");
   };
+
+  const workoutNames = [
+    "pull up",
+    "lat pulldown",
+    "deadlift",
+    "seated row",
+    "back extension",
+    "push up",
+    "bench press",
+    "incline press",
+    "decline press",
+    "dumbbell chest press",
+    "dips",
+    "squat",
+    "leg extension",
+    "leg curl",
+    "lunge",
+    "dumbbell curl",
+    "shoulder press",
+    "military press",
+    "Side Lateral Raise",
+    "front Raise",
+  ];
   return (
     <div className={styles.landingPage}>
       <header style={{ backgroundColor: color }}>
@@ -86,7 +108,7 @@ const Landing = ({ workouts, setWorkouts, color, setColor }) => {
       <main>
         <section>
           <div className={styles.subtitle} style={{ color: color }}>
-            select today's workout{" "}
+            select today's workout
           </div>
           <div className={styles.registerArea}>
             <div className={styles.inputArea}>
@@ -107,26 +129,9 @@ const Landing = ({ workouts, setWorkouts, color, setColor }) => {
                 <option selected disabled>
                   choose basic workout
                 </option>
-                <option>pull up</option>
-                <option>lat pulldown</option>
-                <option>deadlift</option>
-                <option>seated row</option>
-                <option>back extension</option>
-                <option>push up</option>
-                <option>bench press</option>
-                <option>incline press</option>
-                <option>decline press</option>
-                <option>dumbbell chest press</option>
-                <option>dips</option>
-                <option>squat</option>
-                <option>leg extension</option>
-                <option>leg curl</option>
-                <option>lunge</option>
-                <option>dumbbell curl</option>
-                <option>shoulder press</option>
-                <option>military press</option>
-                <option>Side Lateral Raise</option>
-                <option>front Raise</option>
+                {workoutNames.map((name) => (
+                  <option>{name}</option>
+                ))}
               </select>
             </div>
             <button

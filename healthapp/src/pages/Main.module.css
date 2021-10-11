@@ -7,6 +7,7 @@
 .workoutName {
   color: white;
   text-align: center;
+  margin-top: 1rem;
 }
 
 .setPart {
@@ -16,4 +17,20 @@
 .plusBtn {
   background-color: "white";
   text-align: center;
+}
+
+.doneBtnPart {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doneBtn {
+  font-size: 1.3rem;
+  width: 10rem;
+  height: 4rem;
+  color: white;
+  border-radius: 2px;
+  border: none;
 }
