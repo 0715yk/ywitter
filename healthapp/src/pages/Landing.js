@@ -100,6 +100,7 @@ const Landing = ({ workouts, setWorkouts, color, setColor }) => {
     "Side Lateral Raise",
     "front Raise",
   ];
+
   return (
     <div className={styles.landingPage}>
       <header style={{ backgroundColor: color }}>
@@ -145,7 +146,7 @@ const Landing = ({ workouts, setWorkouts, color, setColor }) => {
         </section>
         <section>
           <div className={styles.subtitle} style={{ color: color }}>
-            today's workouts{" "}
+            today's workouts
           </div>
           <div className={styles.workouts}>
             {workouts.map((workout, key) => {

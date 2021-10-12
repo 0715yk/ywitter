@@ -3,10 +3,13 @@ import { useState } from "react";
 import Main from "./pages/Main";
 import Landing from "./pages/Landing";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Record from "./pages/Record";
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
   const [color, setColor] = useState("black");
+  const [checkList, setCheckList] = useState({});
+
   return (
     <Router>
       <Switch>
@@ -19,7 +22,20 @@ function App() {
           />
         </Route>
         <Route path="/main">
-          <Main workouts={workouts} color={color} setWorkouts={setWorkouts} />
+          <Main
+            workouts={workouts}
+            color={color}
+            setWorkouts={setWorkouts}
+            setCheckList={setCheckList}
+            checkList={checkList}
+          />
+        </Route>
+        <Route path="/record">
+          <Record
+            checkList={checkList}
+            setWorkouts={setWorkouts}
+            setCheckList={setCheckList}
+          />
         </Route>
       </Switch>
     </Router>

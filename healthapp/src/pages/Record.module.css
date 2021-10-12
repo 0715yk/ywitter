@@ -1,0 +1,53 @@
+.recordPage header {
+  color: black;
+}
+
+.recordPage table {
+  border: 1px solid black;
+  text-align: center;
+  width: 90vw;
+}
+
+.recordPage th,
+td {
+  border: 1px solid black;
+}
+
+.recordPage th {
+}
+
+#tablePart section {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#tablePart h3 {
+  width: 90vw;
+}
+
+#totalRecordPart {
+  width: 90vw;
+  margin: 0 auto;
+}
+#totalRecordPart ul {
+  list-style: none;
+}
+
+.recordPage footer {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.recordPage nav {
+  width: 30vw;
+  margin: 0 auto;
+}
+
+.recordPage button {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.3rem;
+}

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Main.module.css";
 import { useHistory } from "react-router-dom";
-import List from "./List";
+import List from "../components/List";
 
-const Main = ({ workouts, color, setWorkouts }) => {
-  const [checkList, setCheckList] = useState({});
-  const [nowTime, setNowTime] = useState(0);
-  const [timeLapse, setTimeLapse] = useState("");
+const Main = ({ workouts, color, checkList, setCheckList }) => {
+  // const [nowTime, setNowTime] = useState(0);
+  // const [timeLapse, setTimeLapse] = useState("");
   const history = useHistory();
   useEffect(() => {
     const obj = Object.assign({}, checkList);
@@ -45,8 +44,7 @@ const Main = ({ workouts, color, setWorkouts }) => {
   };
 
   const done = () => {
-    setWorkouts([]);
-    history.push("/");
+    history.push("/record");
   };
 
   return (
