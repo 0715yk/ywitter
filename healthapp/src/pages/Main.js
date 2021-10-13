@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./Main.module.css";
 import { useHistory } from "react-router-dom";
 import List from "../components/List";
+import TimeLapse from "../components/TimeLapse";
 
 const Main = ({ workouts, color, checkList, setCheckList }) => {
-  // const [nowTime, setNowTime] = useState(0);
-  // const [timeLapse, setTimeLapse] = useState("");
+  const [timeLapse, setTimeLapse] = useState("");
   const history = useHistory();
   useEffect(() => {
     const obj = Object.assign({}, checkList);
@@ -14,21 +14,6 @@ const Main = ({ workouts, color, checkList, setCheckList }) => {
     }
     setCheckList(obj);
   }, []);
-
-  // setInterval(() => {
-  //   let time = nowTime + 1;
-  //   setNowTime(time);
-  // }, 1000);
-
-  // useEffect(() => {
-  //   let hr = Math.floor(nowTime / 3600);
-  //   let rest = nowTime % 3600;
-  //   let min = Math.floor(rest / 60);
-  //   rest = nowTime % 60;
-  //   let sec = rest;
-
-  //   setTimeLapse(`${hr}:${min}:${sec}`);
-  // }, [nowTime]);
 
   const addWorkoutSet = (name) => {
     const copyObj = Object.assign({}, checkList);
@@ -44,7 +29,7 @@ const Main = ({ workouts, color, checkList, setCheckList }) => {
   };
 
   const done = () => {
-    history.push("/record");
+    history.push(`/record?timelapse=${timeLapse}`);
   };
 
   return (
@@ -52,7 +37,13 @@ const Main = ({ workouts, color, checkList, setCheckList }) => {
       <header style={{ backgroundColor: color }}>
         <i className="fas fa-running"></i> Progressive Overload
       </header>
-      {/* <section>{`timelapse : ${timeLapse}`}</section> */}
+      <article>
+        <TimeLapse
+          color={color}
+          setTimeLapse={setTimeLapse}
+          timeLapse={timeLapse}
+        />
+      </article>
       <main>
         <section>
           <div className={styles.workoutPart}>

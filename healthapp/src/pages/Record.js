@@ -1,16 +1,52 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Record.module.css";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 
-const Record = ({ checkList, setWorkouts, setCheckList }) => {
+const Record = ({ checkList, setWorkouts, setCheckList, startTime }) => {
   const [totalRecord, setTotalRecord] = useState({});
   const history = useHistory();
+  const [bestSet, setBestSet] = useState({});
+  const getQueryVariable = (variable) => {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split("=");
+      if (pair[0] === variable) {
+        return pair[1];
+      }
+    }
+    return false;
+  };
 
   useEffect(() => {
     const copyObj = { ...checkList };
-    const totalWorkOuts = Object.keys(copyObj).length;
+    const copySet = { ...bestSet };
+    for (let [key, value] of Object.entries(copyObj)) {
+      if (value.length === 0) continue;
+      var best = [-1, -1];
+      for (let el of value) {
+        if (parseInt(best[0]) <= parseInt(el[0])) {
+          if (parseInt(best[0]) === parseInt(el[0])) {
+            if (parseInt(best[1]) < parseInt(el[1])) {
+              best = el;
+            }
+            continue;
+          }
+          best = el;
+        }
+      }
+      copySet[key] = best;
+    }
+    setBestSet(copySet);
     const record = {};
-    record["totalCnt"] = totalWorkOuts;
+    const timeLapse = getQueryVariable("timelapse");
+
+    record["timeLapse"] = `${timeLapse.split(":")[0]}h ${
+      timeLapse.split(":")[1]
+    }m`;
+    record["startTime"] = startTime;
+    record["finishedTime"] = moment().format("HH:mm");
     setTotalRecord(record);
   }, []);
 
@@ -28,16 +64,21 @@ const Record = ({ checkList, setWorkouts, setCheckList }) => {
         <article id={styles.totalRecordPart}>
           <h3>Total</h3>
           <ul>
-            <li>{`total workouts: ${totalRecord["totalCnt"]}`}</li>
-            {/* <li>총 운동종목 : 12시간</li> */}
-            {/* <li>
-              기록 갱신 목록:
-              <ol>
-                <li>벤치 프레스 40kg 달성</li>
-                <li>턱걸이 13개 달성</li>
-              </ol>
+            <li>{moment().format("h:mm A, ddd MMM D일 YYYY")}</li>
+            <li
+              className={styles.timeLapsePart}
+            >{`⏱ ${totalRecord["timeLapse"]} [${totalRecord["startTime"]} ~ ${totalRecord["finishedTime"]}]`}</li>
+            <li>
+              <span>Best set</span>
+              <ul list-style="none">
+                {Object.keys(bestSet).map((el) => {
+                  return (
+                    <li>{`${el} : ${bestSet[el][0]} kg x ${bestSet[el][1]}`}</li>
+                  );
+                })}
+              </ul>
             </li>
-            <li>연속 운동 일수 : 12시간</li> */}
+            {/* <li>연속 운동 일수 : 12시간</li> */}
           </ul>
         </article>
         <article id={styles.tablePart}>

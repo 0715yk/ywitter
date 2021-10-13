@@ -1,8 +1,9 @@
 import React, { useState, useRef } from "react";
 import styles from "./Landing.module.css";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 
-const Landing = ({ workouts, setWorkouts, color, setColor }) => {
+const Landing = ({ workouts, setWorkouts, color, setColor, setStartTime }) => {
   const history = useHistory();
   const [workout, setWorkout] = useState("");
   const selectRef = useRef(null);
@@ -75,6 +76,7 @@ const Landing = ({ workouts, setWorkouts, color, setColor }) => {
       alert("must select more than a workout");
       return;
     }
+    setStartTime(moment().format("HH:mm"));
     history.push("/main");
   };
 

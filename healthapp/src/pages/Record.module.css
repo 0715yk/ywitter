@@ -32,7 +32,14 @@ td {
   margin: 0 auto;
 }
 #totalRecordPart ul {
+  margin-top: 0.5rem;
   list-style: none;
+}
+
+#totalRecordPart ul li span {
+  font-weight: bold;
+  margin-top: 1rem;
+  display: inline-block;
 }
 
 .recordPage footer {
@@ -50,4 +57,12 @@ td {
   width: 100%;
   height: 100%;
   font-size: 1.3rem;
+}
+
+.recordPage h3 {
+  margin-bottom: 0.5rem;
+}
+
+.timeLapsePart {
+  margin-top: 1rem;
 }

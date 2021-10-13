@@ -9,6 +9,7 @@ function App() {
   const [workouts, setWorkouts] = useState([]);
   const [color, setColor] = useState("black");
   const [checkList, setCheckList] = useState({});
+  const [startTime, setStartTime] = useState("");
 
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
             setWorkouts={setWorkouts}
             color={color}
             setColor={setColor}
+            setStartTime={setStartTime}
           />
         </Route>
         <Route path="/main">
@@ -32,6 +34,7 @@ function App() {
         </Route>
         <Route path="/record">
           <Record
+            startTime={startTime}
             checkList={checkList}
             setWorkouts={setWorkouts}
             setCheckList={setCheckList}
