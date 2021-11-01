@@ -132,3 +132,8 @@ header {
     justify-content: flex-end;
   }
 }
+
+.recordBtn {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}

@@ -4,6 +4,7 @@ import Main from "./pages/Main";
 import Landing from "./pages/Landing";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Record from "./pages/Record";
+import Records from "./pages/Records";
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
@@ -39,6 +40,9 @@ function App() {
             setWorkouts={setWorkouts}
             setCheckList={setCheckList}
           />
+        </Route>
+        <Route path="/records">
+          <Records color={color} />
         </Route>
       </Switch>
     </Router>

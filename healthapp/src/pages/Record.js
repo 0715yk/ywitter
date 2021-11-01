@@ -55,6 +55,7 @@ const Record = ({ checkList, setWorkouts, setCheckList, startTime }) => {
     setCheckList({});
     history.push("/");
   };
+
   return (
     <div className={styles.recordPage}>
       <header className={styles.recordHeader}>
@@ -83,7 +84,6 @@ const Record = ({ checkList, setWorkouts, setCheckList, startTime }) => {
         </article>
         <article id={styles.tablePart}>
           {Object.keys(checkList).map((workoutName) => {
-            console.log();
             return (
               <section>
                 <h3>{workoutName}</h3>

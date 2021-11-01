@@ -3,6 +3,7 @@ import styles from "./Main.module.css";
 import { useHistory } from "react-router-dom";
 import List from "../components/List";
 import TimeLapse from "../components/TimeLapse";
+import moment from "moment";
 
 const Main = ({ workouts, color, checkList, setCheckList }) => {
   const [timeLapse, setTimeLapse] = useState("");
@@ -29,6 +30,19 @@ const Main = ({ workouts, color, checkList, setCheckList }) => {
   };
 
   const done = () => {
+    let records = localStorage.getItem("records");
+    if (!records) {
+      const obj = { ...checkList };
+      obj["date"] = moment().format("YYYY년 MM월 D일(ddd)");
+      localStorage.setItem("records", JSON.stringify([obj]));
+    } else {
+      records = JSON.parse(records);
+      const obj = { ...checkList };
+      obj["date"] = moment().format("YYYY년 MM월 D일(ddd)");
+      records.push(obj);
+      localStorage.setItem("records", JSON.stringify(records));
+    }
+
     history.push(`/record?timelapse=${timeLapse}`);
   };
 

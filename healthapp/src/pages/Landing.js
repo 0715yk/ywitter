@@ -103,6 +103,10 @@ const Landing = ({ workouts, setWorkouts, color, setColor, setStartTime }) => {
     "front Raise",
   ];
 
+  const recordsPage = () => {
+    history.push("/records");
+  };
+
   return (
     <div className={styles.landingPage}>
       <header style={{ backgroundColor: color }}>
@@ -234,6 +238,9 @@ const Landing = ({ workouts, setWorkouts, color, setColor, setStartTime }) => {
       >
         🔥 burning 🔥
       </button>
+      <div style={{ color }} className={styles.recordBtn} onClick={recordsPage}>
+        🗒 Records
+      </div>
     </div>
   );
 };

@@ -1,0 +1,69 @@
+.recordPage header {
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.recordPage table {
+  border: 1px solid black;
+  text-align: center;
+  width: 90vw;
+}
+
+.recordPage th,
+td {
+  border: 1px solid black;
+}
+
+.recordPage th {
+}
+
+#tablePart section {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#tablePart h3 {
+  width: 90vw;
+}
+
+#datePart {
+  text-align: center;
+  font-weight: bold;
+}
+
+#tablePart {
+  margin-bottom: 3rem;
+}
+
+#tablePart table {
+  margin-top: 1rem;
+}
+
+.recordPage button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  color: white;
+  width: 3rem;
+  height: 2rem;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.recordPage main {
+  margin-bottom: 10rem;
+}
+
+.emptySign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  font-size:2rem;
+  
+}
